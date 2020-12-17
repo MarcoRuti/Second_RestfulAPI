@@ -26,6 +26,7 @@ namespace RESTFUL_API7.Controllers
         {
             return await _context.TodoItems.ToListAsync();
         }
+        
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
@@ -40,6 +41,8 @@ namespace RESTFUL_API7.Controllers
 
             return todoItem;
         }
+       
+
 
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

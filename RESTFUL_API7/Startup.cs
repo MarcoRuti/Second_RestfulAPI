@@ -19,9 +19,10 @@ namespace RESTFUL_API7
 {
     public class Startup
     {
+        private IConfiguration iConf;
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            iConf = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -29,7 +30,7 @@ namespace RESTFUL_API7
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+            services.AddDbContext<TodoContext>(opt => opt.UseSqlServer(iConf.GetConnectionString("DefaultConnection")));
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
